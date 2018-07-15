@@ -1,0 +1,1 @@
+#include <TestCommon/AraDebug.c>

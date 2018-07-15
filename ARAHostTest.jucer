@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="PAnJXP" name="ARAHostTest" projectType="guiapp" version="1.0.0"
+              bundleIdentifier="jp.diatonic.ARAHostTest" includeBinaryInAppConfig="1"
+              jucerVersion="5.3.2" displaySplashScreen="1" reportAppUsage="1"
+              splashScreenColour="Dark" companyName="diatonic.jp" cppLanguageStandard="17"
+              companyCopyright="diatonic.jp" headerPath="../../ext/ARA_SDK.1.0.1.007/API&#10;../../ext/ARA_SDK.1.0.1.007/Examples"
+              defines="" companyWebsite="https://diatonic.jp" companyEmail="hotwatermorning@gmail.com">
+  <MAINGROUP id="GaJIge" name="ARAHostTest">
+    <GROUP id="{168FC5D4-FA65-8320-F83E-C14C416638E1}" name="Source">
+      <FILE id="TVKcNr" name="ARAPluginInstance.cpp" compile="1" resource="0"
+            file="Source/ARAPluginInstance.cpp"/>
+      <FILE id="MkItIJ" name="ARAPluginInstance.hpp" compile="0" resource="0"
+            file="Source/ARAPluginInstance.hpp"/>
+      <FILE id="JAMSbW" name="Instanciate_AraDebug.c" compile="1" resource="0"
+            file="Source/Instanciate_AraDebug.c"/>
+      <FILE id="TWvN0E" name="Instanciate_ARAHosting.cpp" compile="1" resource="0"
+            file="Source/Instanciate_ARAHosting.cpp"/>
+      <FILE id="aHvhJ2" name="MainComponent.cpp" compile="1" resource="0"
+            file="Source/MainComponent.cpp"/>
+      <FILE id="bGiGIl" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX" vst3Folder="">
+      <CONFIGURATIONS>
+        <CONFIGURATION name="Debug" osxCompatibility="10.10 SDK" isDebug="1" optimisation="1"
+                       targetName="AudioAppExample" enablePluginBinaryCopyStep="1"/>
+        <CONFIGURATION name="Release" osxCompatibility="10.10 SDK" isDebug="0" optimisation="2"
+                       targetName="AudioAppExample" enablePluginBinaryCopyStep="1"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_core" path="../../modules"/>
+        <MODULEPATH id="juce_events" path="../../modules"/>
+        <MODULEPATH id="juce_graphics" path="../../modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../modules"/>
+        <MODULEPATH id="juce_video" path="../../modules"/>
+        <MODULEPATH id="juce_opengl" path="../../modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULES id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULES id="juce_video" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <JUCEOPTIONS JUCE_PLUGINHOST_VST="1" JUCE_PLUGINHOST_VST3="1" JUCE_PLUGINHOST_AU="1"/>
+  <LIVE_SETTINGS>
+    <OSX/>
+  </LIVE_SETTINGS>
+</JUCERPROJECT>
