@@ -776,6 +776,33 @@ public:
         addAndMakeVisible(editor_.get());
     }
     
+    void constrainBounds(Rectangle<int> &r)
+    {
+        if(!already_checked_) {
+            auto orig = editor_->getLocalBounds();
+            editor_->setBounds(0, 0, 1, 1);
+            auto rmin = editor_->getLocalBounds();
+            editor_->setBounds(0, 0, 65535, 65535);
+            auto rmax = editor_->getLocalBounds();
+            
+            editor_->setResizeLimits(rmin.getWidth(),
+                                     rmin.getHeight(),
+                                     rmax.getWidth(),
+                                     rmax.getHeight());
+            already_checked_ = true;
+        }
+        
+        auto c = editor_->getConstrainer();
+        r.setTop(0);
+        r.setLeft(0);
+        r.setWidth(juce::jlimit(c->getMinimumWidth(),
+                                INT_MAX,
+                                r.getWidth()));
+        r.setHeight(juce::jlimit(c->getMinimumHeight(),
+                                 INT_MAX,
+                                 r.getHeight()));
+    }
+    
 private:
     void resized() override
     {
@@ -784,6 +811,7 @@ private:
     
 private:
     std::unique_ptr<juce::AudioProcessorEditor> editor_;
+    bool already_checked_ = false;
 };
 
 //==============================================================================
@@ -1119,16 +1147,35 @@ public:
         // This is called when the MainContentComponent is resized.
         // If you add any child components, this is where you should
         // update their positions.
+        auto const btn_height = 20;
+        auto const btn_width = 60;
+        auto const indicator_height = 20;
+        auto const indicator_width = 300;
         
+        btn_stop_.setBounds(0, 0, btn_width, btn_height);
+        btn_play_.setBounds(60, 0, btn_width, btn_height);
+        indicator_.setBounds(120, 0, indicator_width, indicator_height);
+        btn_load_ara_.setBounds(getWidth() - 120, 0, btn_width, indicator_height);
+        btn_device_.setBounds(getWidth() - 60, 0, btn_width, indicator_height);
         
-        btn_stop_.setBounds(0, 0, 60, 20);
-        btn_play_.setBounds(60, 0, 60, 20);
-        indicator_.setBounds(120, 0, 300, 20);
-        btn_load_ara_.setBounds(getWidth() - 120, 0, 60, 20);
-        btn_device_.setBounds(getWidth() - 60, 0, 60, 20);
         if(plugin_editor_window_) {
-            auto b = getLocalBounds().removeFromBottom(getHeight() / 2);
-            plugin_editor_window_->setBounds(b);
+            auto const editor_height_limit = getHeight() - btn_height;
+            auto b
+            = getLocalBounds()
+            .withTop(btn_height)
+            .withHeight(editor_height_limit / 2)
+            .withY(0);
+            plugin_editor_window_->constrainBounds(b);
+            auto top = btn_height + std::max<int>(0, editor_height_limit - b.getHeight());
+            plugin_editor_window_->setBounds(b.withY(top));
+ 
+            auto test = getLocalBounds();
+            test.setHeight(std::max<int>(test.getHeight(), b.getHeight() + btn_height));
+            test.setWidth(std::max<int>(test.getWidth(), b.getWidth()));
+            
+            if(test != getLocalBounds()) {
+                setBounds(test);
+            }
         }
     }
 
